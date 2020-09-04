@@ -19,14 +19,11 @@ mongoose.connect('mongodb://localhost:27017/wikiDB', {
   useUnifiedTopology: true
 });
 
-const articlesSchema = {
-  title: {
-    required: true,
-    type: String,
-    unique: true
-  },
-  content: {
-    required: true,
-    type: String
-  }
-};
+//Models
+const articlesModel = require("./schema/articles");
+
+//Run Server
+app.listen(port, function() {
+  console.clear();
+  console.log(`Server started on port ${port}`);
+});
