@@ -12,15 +12,17 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
+//Port
 const port = process.env.PORT || 3000;
 
+//Connect DB
 mongoose.connect('mongodb://localhost:27017/wikiDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 
-//Models
-const articlesModel = require("./schema/articles");
+//Routes
+require('./routes')(app);
 
 //Run Server
 app.listen(port, function() {
